@@ -4,10 +4,23 @@ function setup() {
   createCanvas(1600, 800);
   background(51);
 
-  socket = io.connect("http://localhost:6969");
+  socket = io.connect("https://6969-a2daf590-ffa2-4731-95bb-615085e91e4b.ws-us1.gitpod.io");
+
   socket.color = getRandomColor();
   // receive
+  socket.on('newCanvasWithData', newConnection);
   socket.on('mouse', newDrawing);
+}
+
+function newConnection(CanvasData) {
+    console.log(CanvasData);
+
+    for(i = 0; i < CanvasData.length; i++) {
+        noStroke();
+        fill(CanvasData[i].color.r, CanvasData[i].color.g, CanvasData[i].color.b);
+        ellipse(CanvasData[i].x, CanvasData[i].y, 10, 10);
+    }
+
 }
 
 function newDrawing(data) {
@@ -32,6 +45,7 @@ function mouseDragged() {
   noStroke();
   fill(socket.color.r, socket.color.g, socket.color.b);
   ellipse(mouseX, mouseY, 10, 10);
+
 }
 
 function getRandomColor() {

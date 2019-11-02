@@ -12,14 +12,20 @@ var io = socket(server);
 
 io.sockets.on('connection', newConnection);
 
+var CanvasData = [];
+
 function newConnection(socket) {
     console.log('new connection: ' + socket.id);
+
+    socket.emit('newCanvasWithData', CanvasData);
 
     socket.on('mouse', mouseMsg);
 
     function mouseMsg(data) {
         socket.broadcast.emit('mouse', data);
+        CanvasData.push(data);
     }
+
 }
 
 
