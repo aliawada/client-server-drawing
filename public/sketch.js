@@ -1,10 +1,16 @@
 var socket;
 
+var canvasWidth = window.innerWidth - 10;
+var canvasHeight = window.innerHeight - 10;
+var chatWidth = 200;
+var chatHeight = window.innerHeight;
+
+
 function setup() {
-  createCanvas(1600, 800);
+  createCanvas(canvasWidth, canvasHeight);
   background(51);
 
-  socket = io.connect("https://6969-a2daf590-ffa2-4731-95bb-615085e91e4b.ws-us1.gitpod.io");
+  socket = io.connect("http://localhost:6969");
 
   socket.color = getRandomColor();
   // receive
