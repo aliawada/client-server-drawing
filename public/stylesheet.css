@@ -1,0 +1,32 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#defaultCanvas0 {
+  border-style: solid;
+  border-color: black;
+  border-width: 5px;
+  position: absolute;
+}
+
+#chat {
+  float: right;
+  width: 174px;
+  text-justify: auto;
+}
+
+.msg {
+
+}
+
+#defaultCanvas0 {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.nickname_container {
+  width: 174px;
+  float: left;
+}

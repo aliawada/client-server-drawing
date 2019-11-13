@@ -1,6 +1,6 @@
 var socket;
 
-var canvasWidth = window.innerWidth - 10;
+var canvasWidth = window.innerWidth - 184;
 var canvasHeight = window.innerHeight - 10;
 var chatWidth = 200;
 var chatHeight = window.innerHeight;
@@ -9,17 +9,9 @@ var chatHeight = window.innerHeight;
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
   background(51);
-
-  socket = io.connect("http://localhost:6969");
-
-  socket.color = getRandomColor();
-  // receive
-  socket.on('newCanvasWithData', newConnection);
-  socket.on('mouse', newDrawing);
 }
 
 function newConnection(CanvasData) {
-    console.log(CanvasData);
 
     for(i = 0; i < CanvasData.length; i++) {
         noStroke();
